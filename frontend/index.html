@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VALERIAN VAULT — Luxury Fashion Redefined</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ── PROMO BAR ── -->
+<div class="promo-bar" id="promobar">
+  <div style="display:flex;align-items:center;gap:.5rem">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+    Exclusive Access — <strong>15% off</strong> your first luxury purchase
+  </div>
+  <button class="promo-cta" onclick="openSignUp()">Claim Offer</button>
+  <span class="promo-x" onclick="document.getElementById('promobar').style.display='none'">&#x2715;</span>
+</div>
+
+<!-- ── NAVBAR ── -->
+<nav class="nav">
+  <span class="nav-logo" onclick="showPage('home')">VALERIAN VAULT</span>
+  <div class="nav-center">
+    <span class="nl on" id="nl-home" onclick="showPage('home')">Home</span>
+    <span class="nl" id="nl-shop" onclick="showPage('shop')">Shop</span>
+    <span class="nl" onclick="openReqModal()">Request Item</span>
+  </div>
+  <div class="nav-right">
+    <!-- search -->
+    <button class="ni" onclick="openSearch()" aria-label="Search products">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <!-- wishlist -->
+    <button class="ni" onclick="openWishlist()" aria-label="Open wishlist">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    </button>
+    <!-- cart -->
+    <button class="ni" onclick="openCart()" aria-label="Open cart">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="cart-dot" id="cdot"></span>
+    </button>
+    <div class="nav-div"></div>
+    <!-- signed out -->
+    <div id="auth-out" style="display:flex">
+      <button class="ni" onclick="openSignIn()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+    </div>
+    <!-- signed in -->
+    <div id="auth-in" style="display:none" class="udrop-wrap">
+      <button class="ni" onclick="toggleUDrop()">
+        <div id="uavatar" style="width:26px;height:26px;border-radius:50%;background:var(--s3);border:1px solid var(--br);display:flex;align-items:center;justify-content:center;font-size:.67rem;font-weight:600;color:var(--tx2)">?</div>
+      </button>
+      <div class="udrop" id="udrop">
+        <div class="udrop-head">
+          <div class="udrop-name" id="uname">–</div>
+          <div class="udrop-email" id="uemail">–</div>
+        </div>
+        <div class="udrop-item" onclick="closeUDrop();openInfo('orders')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          My Orders
+        </div>
+        <div class="udrop-item" onclick="closeUDrop();openSettings()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </div>
+        <div class="udrop-item" onclick="closeUDrop();openWishlist()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Wishlist
+        </div>
+        <div class="udrop-sep"></div>
+        <div class="udrop-item danger" onclick="signOut()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Sign Out
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═════════ HOME PAGE ═════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO BANNER - Simple & Direct -->
+  <section class="hero-simple" style="background-image:linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.8)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1600&q=80');background-size:cover;background-position:center">
+    <div class="hero-simple-content">
+      <div class="hero-tag">Luxury Fashion in Nairobi</div>
+      <h1 class="hero-title">VALERIAN VAULT</h1>
+      <p class="hero-subtitle">Authenticated designer pieces delivered to your door</p>
+      <div class="hero-actions">
+        <button class="btn-p" onclick="showPage('shop')">Shop Now</button>
+        <button class="btn-g" onclick="openReqModal()">Request Item</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="mwrap"><div class="mtrack" id="mtrack"></div></div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat fade-up"><div class="stat-n">15+</div><div class="stat-l">Premium Brands</div></div>
+    <div class="stat fade-up" style="transition-delay:.08s"><div class="stat-n">24h</div><div class="stat-l">Nairobi Delivery</div></div>
+    <div class="stat fade-up" style="transition-delay:.16s"><div class="stat-n">M-Pesa</div><div class="stat-l">Easy Checkout</div></div>
+    <div class="stat fade-up" style="transition-delay:.24s"><div class="stat-n">100%</div><div class="stat-l">Authenticity Guaranteed</div></div>
+  </div>
+
+  <!-- CATEGORY GRID -->
+  <section class="sec">
+    <div class="sec-head">
+      <div><div class="sec-lbl">Browse by</div><div class="sec-title">Category</div></div>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="gotoShopCat('Sneakers')">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" alt="Sneakers">
+        <div class="cat-info"><div class="cat-name">Sneakers</div><div class="cat-cnt">64 items</div></div>
+      </div>
+      <div class="cat-card" onclick="gotoShopCat('Hoodies')">
+        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&q=80" alt="Apparel">
+        <div class="cat-info"><div class="cat-name">Apparel</div><div class="cat-cnt">54 items</div></div>
+      </div>
+      <div class="cat-card" onclick="gotoShopCat('Bags')">
+        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&q=80" alt="Bags">
+        <div class="cat-info"><div class="cat-name">Bags</div><div class="cat-cnt">28 items</div></div>
+      </div>
+      <div class="cat-card" onclick="gotoShopCat('Caps')">
+        <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&q=80" alt="Accessories">
+        <div class="cat-info"><div class="cat-name">Accessories</div><div class="cat-cnt">32 items</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW ARRIVALS -->
+  <section class="sec" style="padding-top:0">
+    <div class="sec-head">
+      <div><div class="sec-lbl">Collection</div><div class="sec-title">New Arrivals</div></div>
+      <span class="sec-link" onclick="showPage('shop')">View all <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </div>
+    <!-- Gender + category filters -->
+    <div class="filter-row">
+      <div class="gender-tabs">
+        <button class="gtab on" onclick="hGender(this,'All')">All</button>
+        <button class="gtab" onclick="hGender(this,'Men')">Men</button>
+        <button class="gtab" onclick="hGender(this,'Women')">Women</button>
+      </div>
+      <div class="chips" id="hchips">
+        <div class="chip on" onclick="hCat(this,'all')">All</div>
+        <div class="chip" onclick="hCat(this,'Sneakers')">Sneakers</div>
+        <div class="chip" onclick="hCat(this,'Apparel')">Apparel</div>
+        <div class="chip" onclick="hCat(this,'Bags')">Bags</div>
+        <div class="chip" onclick="hCat(this,'Nike')">Nike</div>
+        <div class="chip" onclick="hCat(this,'Adidas')">Adidas</div>
+        <div class="chip" onclick="hCat(this,'Jordan')">Jordan</div>
+      </div>
+    </div>
+    <div class="pgrid" id="hgrid"></div>
+  </section>
+
+  <!-- ON SALE -->
+  <section class="sec" style="padding-top:0">
+    <div class="sec-head">
+      <div><div class="sec-lbl">Limited Time</div><div class="sec-title">On Sale</div></div>
+    </div>
+    <div class="pgrid" id="sgrid"></div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="sec testimonials-sec">
+    <div class="sec-head">
+      <div><div class="sec-lbl">Reviews</div><div class="sec-title">What Our Clients Say</div></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Exceptional quality and service. The authentication process gave me complete confidence in my purchase. Delivery to Komarock was fast."</p>
+        <div class="test-author">— James Isaiah, Komarock Estate</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"VALERIAN VAULT sourced a rare piece I'd been searching for months. Their concierge service is unmatched. Highly recommend!"</p>
+        <div class="test-author">— Samuel Muriithi, Ngong</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"The attention to detail, from packaging to delivery, reflects true luxury. My go-to for designer pieces in Nairobi."</p>
+        <div class="test-author">— Amara Wanjiku, Westlands</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BADGES -->
+  <section class="trust-sec">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="trust-title">Authenticated</div>
+        <div class="trust-desc">Every piece verified with certificate</div>
+      </div>
+      <div class="trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="trust-title">Global Sourcing</div>
+        <div class="trust-desc">Rare pieces from worldwide</div>
+      </div>
+      <div class="trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div class="trust-title">VIP Concierge</div>
+        <div class="trust-desc">Personal shopping assistance</div>
+      </div>
+      <div class="trust-item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="trust-title">Secure Delivery</div>
+        <div class="trust-desc">White glove service available</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="ft-main">
+      <div>
+        <div class="ft-logo">VALERIAN VAULT</div>
+        <div class="ft-sub">The world's most exclusive destination for authenticated luxury fashion, rare collectibles, and bespoke designer pieces.</div>
+        <div class="ft-nl">
+          <input type="email" class="ft-em" placeholder="Email address">
+          <button class="ft-nlbtn" onclick="showToast('Subscribed — asante!')">Subscribe</button>
+        </div>
+        <!-- Glass social icons using SVG -->
+        <div class="ft-socials">
+          <!-- Instagram -->
+          <div class="ft-social" title="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <!-- Twitter/X -->
+          <div class="ft-social" title="Twitter / X">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M4 20L20 4"/></svg>
+          </div>
+          <!-- TikTok -->
+          <div class="ft-social" title="TikTok">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </div>
+          <!-- WhatsApp -->
+          <div class="ft-social" title="WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="ft-ct">Shop</div>
+        <div class="ft-links">
+          <span class="ft-link" onclick="showPage('shop')">New Arrivals</span>
+          <span class="ft-link" onclick="gotoShopCat('Sneakers')">Sneakers</span>
+          <span class="ft-link" onclick="gotoShopCat('Hoodies')">Apparel</span>
+          <span class="ft-link" onclick="gotoShopCat('Bags')">Bags</span>
+          <span class="ft-link" onclick="openReqModal()">Request Item</span>
+        </div>
+      </div>
+      <div>
+        <div class="ft-ct">Support</div>
+        <div class="ft-links">
+          <span class="ft-link" onclick="openInfo('size')">Size Guide</span>
+          <span class="ft-link" onclick="openInfo('authenticity')">Authenticity</span>
+          <span class="ft-link" onclick="openInfo('shipping')">Shipping Info</span>
+          <span class="ft-link" onclick="openInfo('returns')">Returns</span>
+          <span class="ft-link" onclick="openInfo('orders')">Track Order</span>
+        </div>
+      </div>
+      <div>
+        <div class="ft-ct">Company</div>
+        <div class="ft-links">
+          <span class="ft-link" onclick="openInfo('about')">About VALERIAN VAULT</span>
+          <span class="ft-link" onclick="openInfo('careers')">Careers</span>
+          <span class="ft-link" onclick="openInfo('press')">Press</span>
+          <span class="ft-link" onclick="openInfo('blog')">Blog</span>
+          <span class="ft-link" onclick="openInfo('contact')">Contact</span>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <div class="ft-copy">© 2026 VALERIAN VAULT. Global Luxury.</div>
+      <div class="ft-badges">
+        <div class="ft-badge"><span class="ft-bic"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>100% Authenticated</div>
+        <div class="ft-pays">
+          <span class="paytag">M-PESA</span>
+          <span class="paytag">VISA</span>
+          <span class="paytag">MC</span>
+          <span class="paytag">COD</span>
+        </div>
+      </div>
+      <div class="ft-loc"><span>🇰🇪 Kenya</span><span class="ft-sep">|</span><span>KES</span><span class="ft-sep">|</span><span>English</span></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═════════ SHOP PAGE ═════════ -->
+<div class="page" id="page-shop">
+  <div class="shop-layout">
+    <!-- Left Sidebar Filters -->
+    <aside class="shop-sidebar" id="shop-sidebar">
+      <button class="sidebar-close-btn" onclick="toggleShopSidebar()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="filter-header">
+        <h3>Filters</h3>
+        <button class="filter-clear" onclick="clearAllFilters()">Clear All</button>
+      </div>
+      
+      <!-- Gender Filter -->
+      <div class="filter-group">
+        <h4 class="filter-title">Gender</h4>
+        <label class="filter-checkbox">
+          <input type="checkbox" value="Men" onchange="toggleGenderFilter(this)">
+          <span>Men</span>
+        </label>
+        <label class="filter-checkbox">
+          <input type="checkbox" value="Women" onchange="toggleGenderFilter(this)">
+          <span>Women</span>
+        </label>
+        <label class="filter-checkbox">
+          <input type="checkbox" value="Unisex" onchange="toggleGenderFilter(this)">
+          <span>Unisex</span>
+        </label>
+      </div>
+      
+      <!-- Category Filter -->
+      <div class="filter-group">
+        <h4 class="filter-title">Category</h4>
+        <label class="filter-checkbox">
+          <input type="checkbox" value="Sneakers" onchange="toggleCategoryFilter(this)">
+          <span>Sneakers</span>
+        </label>
+        <label class="filter-checkbox">
+          <input type="checkbox" value="Hoodies" onchange="toggleCategoryFilter(this)">
+          <span>Hoodies</span>
+        </label>
+        <label class="filter-checkbox">
+          <input type="checkbox" value="Bags" onchange="toggleCategoryFilter(this)">
+          <span>Bags</span>
+        </label>
+        <label class="filter-checkbox">
+          <input type="checkbox" value="Caps" onchange="toggleCategoryFilter(this)">
+          <span>Caps</span>
+        </label>
+      </div>
+      
+      <!-- Brand Filter -->
+      <div class="filter-group">
+        <h4 class="filter-title">Brand</h4>
+        <div id="brand-filters"></div>
+      </div>
+      
+      <!-- Price Filter -->
+      <div class="filter-group">
+        <h4 class="filter-title">Price Range</h4>
+        <div class="price-inputs">
+          <input type="number" id="min-price" placeholder="Min" value="0" onchange="applyShopFilters()">
+          <span>-</span>
+          <input type="number" id="max-price" placeholder="Max" value="100000" onchange="applyShopFilters()">
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="shop-content">
+      <!-- Top Bar -->
+      <div class="shop-toolbar">
+        <div class="shop-toolbar-left">
+          <button class="filter-toggle-btn" onclick="toggleShopSidebar()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+            <span>Filters</span>
+          </button>
+          <h2 id="shop-results-count">Loading...</h2>
+        </div>
+        <div class="shop-sort">
+          <label>Sort by:</label>
+          <select id="shop-sort-select" onchange="applyShopFilters()">
+            <option value="default">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="newest">Newest Arrivals</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- Products Grid -->
+      <div class="shop-products-grid" id="shop-products-grid"></div>
+    </main>
+  </div>
+</div>
+
+<!-- ═════════ DETAIL PAGE ═════════ -->
+<div class="page" id="page-detail">
+  <button class="dbk" onclick="showPage(prevPage)">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back
+  </button>
+  <div class="dlayout" id="dwrap"></div>
+  
+  <!-- Related Products -->
+  <div class="related-sec">
+    <div class="sec-head" style="padding:0 2.5rem">
+      <div><div class="sec-lbl">You May Also Like</div><div class="sec-title">Related Pieces</div></div>
+    </div>
+    <div class="pgrid" id="related-grid" style="padding:0 2.5rem 2.5rem"></div>
+  </div>
+  
+  <!-- Product Reviews -->
+  <div class="reviews-sec">
+    <div class="sec-head" style="padding:0 2.5rem">
+      <div><div class="sec-lbl">Customer Reviews</div><div class="sec-title">What Clients Say</div></div>
+    </div>
+    <div class="reviews-grid" id="product-reviews"></div>
+  </div>
+</div>
+
+<!-- OVERLAY + CART -->
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+<div class="cdrawer" id="cdrawer">
+  <div class="dr-h">
+    <span class="dr-title">Your Bag</span>
+    <button class="dr-x" onclick="closeAll()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="citems" id="cilist"></div>
+  <div id="cfoot" style="display:none">
+    <div class="cfoot">
+      <div class="ct-row"><span>Subtotal</span><span id="csub">KSh 0</span></div>
+      <div class="ct-row"><span>Delivery — Nairobi</span><span>KSh 250</span></div>
+      <div class="ct-row g"><span>Total</span><span id="ctotal">KSh 0</span></div>
+    </div>
+    <div style="padding:0 1.7rem 1.7rem">
+      <div class="mpesa-strip">Pay via M-Pesa, Visa, or Cash on Delivery. Free delivery on orders over KSh 30,000.</div>
+      <button class="cbtn" onclick="openCheckout()">Checkout with M-Pesa</button>
+    </div>
+  </div>
+</div>
+
+<!-- AI -->
+<button class="ai-fab" onclick="toggleAI()">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+<div class="ai-win" id="aiwin">
+  <div class="ai-h">
+    <div class="ai-dot"></div>
+    <div class="ai-ht">VALERIAN Concierge</div>
+    <div class="ai-hs">Online</div>
+    <button class="ai-xb" onclick="toggleAI()"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+  <div class="ai-msgs" id="aimsgs"></div>
+  <div class="ai-chips" id="aichips"></div>
+  <div class="ai-ir">
+    <input class="ai-in" id="aiinput" placeholder="Ask about sizing, bags, delivery..." onkeydown="if(event.key==='Enter')sendAI()">
+    <button class="ai-sb" onclick="sendAI()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+  </div>
+</div>
+
+<!-- SIGN IN MODAL -->
+<div class="modal-bg" id="signin-bg">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('signin-bg')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="m-lbl">Welcome back</div>
+    <div class="m-title">Sign In</div>
+    <div class="m-sub">Access your orders, wishlist and VALERIAN VAULT rewards.</div>
+    <div class="ff"><label class="fl">Email</label><input type="email" class="fi" id="si-em" placeholder="you@example.com"></div>
+    <div class="ff"><label class="fl">Password</label><input type="password" class="fi" id="si-pw" placeholder="••••••••"></div>
+    <button class="fsub" onclick="doSignIn()">Sign In</button>
+    <div class="m-lnk">Don't have an account? <span onclick="closeModal('signin-bg');openSignUp()">Sign up &amp; get 10% off</span></div>
+  </div>
+</div>
+
+<!-- SIGN UP MODAL -->
+<div class="modal-bg" id="signup-bg">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('signup-bg')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div id="sufm">
+      <div class="m-lbl">Join VALERIAN VAULT</div>
+      <div class="m-title">Create Account</div>
+      <div class="m-sub">Join the elite and receive <strong style="color:var(--ac)">15% off</strong> your first luxury purchase.</div>
+      <div class="fr2">
+        <div class="ff"><label class="fl">First Name</label><input type="text" class="fi" id="su-fn" placeholder="Amara"></div>
+        <div class="ff"><label class="fl">Last Name</label><input type="text" class="fi" id="su-ln" placeholder="Odhiambo"></div>
+      </div>
+      <div class="ff"><label class="fl">Email</label><input type="email" class="fi" id="su-em" placeholder="you@example.com"></div>
+      <div class="ff"><label class="fl">Password</label><input type="password" class="fi" id="su-pw" placeholder="••••••••"></div>
+      <button class="fsub" onclick="doSignUp()">Create Account</button>
+      <div class="m-lnk">Already have an account? <span onclick="closeModal('signup-bg');openSignIn()">Sign In</span></div>
+    </div>
+    <div id="suok" class="sv" style="display:none">
+      <div class="sv-ring"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="sv-t">Welcome to VALERIAN VAULT</div>
+      <div class="sv-s">Your account is set up. Use code <strong style="color:var(--ac)">VALERIAN15</strong> at checkout for 15% off your first order.</div>
+      <button class="fsub" style="margin-top:1.5rem" onclick="closeModal('signup-bg')">Start Shopping</button>
+    </div>
+  </div>
+</div>
+
+<!-- REQUEST MODAL -->
+<div class="modal-bg" id="req-bg">
+  <div class="modal" style="max-width:430px">
+    <button class="modal-x" onclick="closeModal('req-bg')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div id="reqfm">
+      <div class="m-lbl">Sourcing Request</div>
+      <div class="m-title">Can't Find It?</div>
+      <div class="m-sub">Request any item — we'll source it from Nairobi, Dubai, UK or USA within 3–7 days.</div>
+      <div class="ff"><label class="fl">Brand</label>
+        <select class="fs" id="rqbrand"><option>Nike</option><option>Adidas</option><option>Jordan</option><option>New Balance</option><option>Puma</option><option>Corteiz</option><option>Supreme</option><option>Off-White</option><option>Yeezy</option><option>Other</option></select>
+      </div>
+      <div class="ff"><label class="fl">Item Name &amp; Style</label><input type="text" class="fi" id="rqitem" placeholder="e.g. Nike Air Max 95 Triple Black"></div>
+      <div class="fr2">
+        <div class="ff"><label class="fl">Size</label><input type="text" class="fi" id="rqsize" placeholder="EU 42 / M"></div>
+        <div class="ff"><label class="fl">Budget (KSh)</label><input type="text" class="fi" id="rqbudget" placeholder="15,000"></div>
+      </div>
+      <div class="ff"><label class="fl">Contact</label><input type="text" class="fi" id="rqcontact" placeholder="07XX XXX XXX"></div>
+      <div class="ff"><label class="fl">Notes</label><textarea class="fta" id="rqnotes" placeholder="Colorway, year, any other details..."></textarea></div>
+      <button class="fsub" onclick="submitReq()">Submit Request</button>
+    </div>
+    <div id="reqok" class="sv" style="display:none">
+      <div class="sv-ring"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="sv-t">Request Received</div>
+      <div class="sv-s">Asante. We'll reach out within 24 hours via WhatsApp or email. Our team sources across Nairobi, Dubai, UK &amp; USA.</div>
+      <button class="fsub" style="margin-top:1.5rem" onclick="closeModal('req-bg')">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="modal-bg" id="settings-bg">
+  <div class="modal" style="max-width:455px">
+    <button class="modal-x" onclick="closeModal('settings-bg')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="m-lbl">Account</div>
+    <div class="m-title" style="margin-bottom:1.2rem">Settings</div>
+    <div class="stabs">
+      <div class="stab on" onclick="switchStab(this,'stp')">Profile</div>
+      <div class="stab" onclick="switchStab(this,'stn')">Notifications</div>
+      <div class="stab" onclick="switchStab(this,'stpr')">Preferences</div>
+    </div>
+    <!-- Profile -->
+    <div class="ssec on" id="stp">
+      <div class="fr2">
+        <div class="ff"><label class="fl">First Name</label><input type="text" class="fi" id="st-fn" placeholder="Amara"></div>
+        <div class="ff"><label class="fl">Last Name</label><input type="text" class="fi" id="st-ln"></div>
+      </div>
+      <div class="ff"><label class="fl">Email</label><input type="email" class="fi" id="st-em"></div>
+      <div class="ff"><label class="fl">Phone</label><input type="text" class="fi" id="st-ph" placeholder="+254 7XX XXX XXX"></div>
+      <div class="ff"><label class="fl">New Password</label><input type="password" class="fi" placeholder="Leave blank to keep current"></div>
+      <button class="fsub" onclick="saveProfile()">Save Changes</button>
+    </div>
+    <!-- Notifications -->
+    <div class="ssec" id="stn">
+      <div class="srow"><div><div class="srow-l">Order Updates</div><div class="srow-s">Dispatch and delivery notifications</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+      <div class="srow"><div><div class="srow-l">New Arrivals</div><div class="srow-s">Be first to know about new drops</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+      <div class="srow"><div><div class="srow-l">Sale Alerts</div><div class="srow-s">Exclusive discounts and offers</div></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+      <div class="srow"><div><div class="srow-l">WhatsApp Updates</div><div class="srow-s">Get order updates via WhatsApp</div></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+    </div>
+    <!-- Preferences -->
+    <div class="ssec" id="stpr">
+      <div class="srow"><div><div class="srow-l">Currency</div><div class="srow-s">Display prices in KSh</div></div><div style="font-size:.74rem;color:var(--tx2)">KES — KSh</div></div>
+      <div class="srow"><div><div class="srow-l">Default Gender</div><div class="srow-s">Show Men's, Women's, or All</div></div><select class="sortsel"><option>All</option><option>Men</option><option>Women</option></select></div>
+      <div class="srow"><div><div class="srow-l">Marketing Emails</div><div class="srow-s">Curated picks and lookbooks</div></div><div class="toggle on" onclick="this.classList.toggle('on')"></div></div>
+      <div class="srow"><div><div class="srow-l" style="color:var(--red)">Delete Account</div><div class="srow-s">Permanently remove your account</div></div><button style="font-size:.67rem;color:var(--red);border:1px solid rgba(239,68,68,.28);border-radius:2px;padding:.28rem .58rem;cursor:pointer" onclick="showToast('Contact support to delete your account')">Delete</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH MODAL -->
+<div class="modal-bg" id="search-bg">
+  <div class="modal" style="max-width:560px">
+    <button class="modal-x" onclick="closeModal('search-bg')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="m-lbl">Product Search</div>
+    <div class="m-title">Find Your Fit</div>
+    <div class="m-sub">Search by brand, style, category, gender, or price.</div>
+    <div class="ff"><label class="fl">Search</label><input type="search" class="fi" id="search-input" placeholder="Nike, bags, women, hoodie..." oninput="renderSearch()" onkeydown="if(event.key==='Enter')openFirstSearchResult()"></div>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<!-- WISHLIST MODAL -->
+<div class="modal-bg" id="wishlist-bg">
+  <div class="modal" style="max-width:560px">
+    <button class="modal-x" onclick="closeModal('wishlist-bg')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="m-lbl">Saved Items</div>
+    <div class="m-title">Wishlist</div>
+    <div class="m-sub">Your saved products stay on this browser until you remove them.</div>
+    <div class="wish-list" id="wishlist-list"></div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-bg" id="checkout-bg">
+  <div class="modal" style="max-width:520px">
+    <button class="modal-x" onclick="closeModal('checkout-bg')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div id="cofm">
+      <div class="m-lbl">Secure Checkout</div>
+      <div class="m-title">Delivery Details</div>
+      <div class="m-sub">Confirm your contact details and preferred payment method.</div>
+      <div class="fr2">
+        <div class="ff"><label class="fl">Full Name</label><input type="text" class="fi" id="co-name" placeholder="Amara Odhiambo"></div>
+        <div class="ff"><label class="fl">Phone</label><input type="tel" class="fi" id="co-phone" placeholder="07XX XXX XXX"></div>
+      </div>
+      <div class="ff"><label class="fl">Delivery Area</label><input type="text" class="fi" id="co-area" placeholder="Westlands, Nairobi"></div>
+      <div class="ff"><label class="fl">Payment Method</label><select class="fs" id="co-pay"><option>M-Pesa</option><option>Visa / Mastercard</option><option>Cash on Delivery</option></select></div>
+      <div class="checkout-lines" id="co-summary"></div>
+      <button class="fsub" onclick="placeOrder()">Place Order</button>
+    </div>
+    <div id="cook" class="sv" style="display:none">
+      <div class="sv-ring"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="sv-t">Order Confirmed</div>
+      <div class="sv-s" id="co-ok-text">Your order has been received.</div>
+      <button class="fsub" style="margin-top:1.5rem" onclick="closeModal('checkout-bg')">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- INFO MODAL -->
+<div class="modal-bg" id="info-bg">
+  <div class="modal" style="max-width:520px">
+    <button class="modal-x" onclick="closeModal('info-bg')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="m-lbl" id="info-label">VALERIAN VAULT</div>
+    <div class="m-title" id="info-title">Information</div>
+    <div class="info-body" id="info-body"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><div class="tdot"></div><span id="tmsg">Done</span></div>
+
+<!-- EMAIL CAPTURE POPUP -->
+<div class="email-popup" id="email-popup">
+  <div class="email-popup-content">
+    <button class="modal-x" onclick="closeEmailPopup()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="email-popup-icon">✉️</div>
+    <div class="email-popup-title">Join the Elite</div>
+    <div class="email-popup-text">Get exclusive access to new arrivals, private sales, and luxury insights.</div>
+    <input type="email" class="fi" id="popup-email" placeholder="Enter your email">
+    <button class="fsub" onclick="submitPopupEmail()">Get 15% Off First Order</button>
+    <div class="email-popup-note">We respect your privacy. Unsubscribe anytime.</div>
+  </div>
+</div>
+
+<!-- QUICK VIEW MODAL -->
+<div class="modal-bg" id="quickview-bg">
+  <div class="modal" style="max-width:900px">
+    <button class="modal-x" onclick="closeModal('quickview-bg')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="quickview-content" id="quickview-content"></div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
