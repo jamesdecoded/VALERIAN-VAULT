@@ -1,13 +1,23 @@
 {
-  "name": "soko-storefront",
-  "version": "1.0.0",
+  "name": "valerian-vault",
+  "version": "2.0.0",
   "private": true,
-  "description": "SOKO storefront - separated frontend and backend",
+  "description": "VALERIAN VAULT - Premium luxury fashion marketplace for Kenya",
   "scripts": {
     "start": "cd backend && npm start",
-    "check": "cd backend && npm run check && cd ../frontend && npm run check"
+    "dev": "cd backend && npm start",
+    "check": "cd backend && npm run check"
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "keywords": [
+    "luxury",
+    "fashion",
+    "e-commerce",
+    "kenya",
+    "streetwear"
+  ],
+  "author": "VALERIAN VAULT",
+  "license": "MIT"
 }
