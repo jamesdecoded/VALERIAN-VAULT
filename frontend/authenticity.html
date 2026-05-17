@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authenticity Guarantee — VALERIAN VAULT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .info-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .info-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .info-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .info-content {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .info-section {
+            margin-bottom: 3rem;
+        }
+
+        .info-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .info-section h3 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        .info-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .info-section ul {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .info-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-highlight {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .guarantee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .guarantee-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .guarantee-card svg {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .guarantee-card h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .guarantee-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gold);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .info-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .guarantee-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="info-container">
+        <a href="index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Home
+        </a>
+
+        <div class="info-header">
+            <h1 class="info-title">Authenticity Guarantee</h1>
+            <p class="info-subtitle">100% Authentic Luxury Fashion, Guaranteed</p>
+        </div>
+
+        <div class="info-content">
+            <div class="info-section">
+                <h2>Our Commitment</h2>
+                <p>
+                    At VALERIAN VAULT, we guarantee that every item we sell is 100% authentic. We understand the importance of authenticity when investing in luxury fashion, and we take this responsibility seriously.
+                </p>
+                <div class="info-highlight">
+                    <strong>Our Promise:</strong> If any item purchased from VALERIAN VAULT is found to be inauthentic, we will provide a full refund and cover all associated costs.
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>How We Ensure Authenticity</h2>
+                <div class="guarantee-grid">
+                    <div class="guarantee-card">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <h4>Verified Sources</h4>
+                        <p>Direct partnerships with authorized retailers and brands</p>
+                    </div>
+
+                    <div class="guarantee-card">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <h4>Expert Inspection</h4>
+                        <p>Every item inspected by luxury authentication specialists</p>
+                    </div>
+
+                    <div class="guarantee-card">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        <h4>Documentation</h4>
+                        <p>Original receipts, certificates, and authenticity cards</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Authentication Process</h2>
+                <p>Every item goes through our rigorous authentication process:</p>
+                <ol style="color: var(--text-secondary); line-height: 1.8; margin-left: 2rem;">
+                    <li><strong>Source Verification:</strong> Confirm item origin from authorized retailers or verified sellers</li>
+                    <li><strong>Physical Inspection:</strong> Detailed examination of materials, stitching, hardware, and craftsmanship</li>
+                    <li><strong>Serial Number Check:</strong> Verify serial numbers and date codes against brand databases</li>
+                    <li><strong>Logo & Branding:</strong> Inspect logos, fonts, and brand markings for accuracy</li>
+                    <li><strong>Packaging Review:</strong> Authenticate boxes, dust bags, and accompanying materials</li>
+                    <li><strong>Documentation:</strong> Verify receipts, certificates, and authenticity cards</li>
+                    <li><strong>Final Approval:</strong> Senior authenticator signs off before listing</li>
+                </ol>
+            </div>
+
+            <div class="info-section">
+                <h2>What We Check</h2>
+                
+                <h3>Sneakers & Footwear</h3>
+                <ul>
+                    <li>Box labels and barcodes</li>
+                    <li>Shoe construction and stitching patterns</li>
+                    <li>Material quality and texture</li>
+                    <li>Logo placement and font accuracy</li>
+                    <li>Insole details and branding</li>
+                    <li>Outsole patterns and markings</li>
+                    <li>Size tags and production codes</li>
+                </ul>
+
+                <h3>Bags & Accessories</h3>
+                <ul>
+                    <li>Leather quality and grain pattern</li>
+                    <li>Hardware weight and finish</li>
+                    <li>Stitching consistency and thread quality</li>
+                    <li>Interior lining and pockets</li>
+                    <li>Serial numbers and date codes</li>
+                    <li>Logo stamps and embossing</li>
+                    <li>Dust bag and authenticity cards</li>
+                </ul>
+
+                <h3>Apparel</h3>
+                <ul>
+                    <li>Fabric quality and weight</li>
+                    <li>Tag placement and information</li>
+                    <li>Stitching and seam quality</li>
+                    <li>Logo and label accuracy</li>
+                    <li>Care instructions and sizing</li>
+                    <li>Buttons, zippers, and hardware</li>
+                </ul>
+
+                <h3>Watches</h3>
+                <ul>
+                    <li>Movement authenticity</li>
+                    <li>Case and bracelet construction</li>
+                    <li>Serial and model numbers</li>
+                    <li>Dial and hands quality</li>
+                    <li>Crown and caseback engravings</li>
+                    <li>Original box and papers</li>
+                    <li>Warranty cards</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Our Authentication Team</h2>
+                <p>Our authentication specialists have:</p>
+                <ul>
+                    <li>5+ years of experience in luxury fashion authentication</li>
+                    <li>Training from leading authentication services</li>
+                    <li>Deep knowledge of brand-specific details and variations</li>
+                    <li>Access to brand databases and reference materials</li>
+                    <li>Continuous education on new releases and authentication techniques</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Sourcing Standards</h2>
+                <p>We only source items from:</p>
+                <ul>
+                    <li><strong>Authorized Retailers:</strong> Official brand stores and authorized dealers</li>
+                    <li><strong>Verified Resellers:</strong> Trusted luxury consignment partners</li>
+                    <li><strong>Direct Imports:</strong> Items purchased directly from international boutiques</li>
+                    <li><strong>Private Collections:</strong> Authenticated items from verified collectors</li>
+                </ul>
+
+                <div class="info-highlight">
+                    <strong>We Never:</strong> Source from unauthorized sellers, flea markets, or unverified online marketplaces.
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Authenticity Documentation</h2>
+                <p>With every purchase, you receive:</p>
+                <ul>
+                    <li>Original brand packaging (when available)</li>
+                    <li>Authenticity cards and certificates</li>
+                    <li>Original receipts or proof of purchase</li>
+                    <li>VALERIAN VAULT authenticity guarantee certificate</li>
+                    <li>Detailed product information and serial numbers</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Third-Party Authentication</h2>
+                <p>
+                    For added peace of mind, we partner with leading third-party authentication services. High-value items may include authentication from:
+                </p>
+                <ul>
+                    <li>Entrupy (AI-powered authentication)</li>
+                    <li>Legit Check App</li>
+                    <li>CheckCheck</li>
+                    <li>Brand-specific authentication services</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>If You Have Concerns</h2>
+                <p>If you have any doubts about the authenticity of your item:</p>
+                <ol style="color: var(--text-secondary); line-height: 1.8; margin-left: 2rem;">
+                    <li>Contact us immediately via WhatsApp or email</li>
+                    <li>Provide photos and details of your concerns</li>
+                    <li>We'll review your case within 24 hours</li>
+                    <li>If needed, we'll arrange third-party authentication</li>
+                    <li>Full refund if item is found to be inauthentic</li>
+                </ol>
+
+                <div class="info-highlight">
+                    <strong>Our Guarantee:</strong> If any item is proven to be inauthentic, we will:
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Provide a full refund (including shipping)</li>
+                        <li>Cover authentication costs</li>
+                        <li>Offer compensation for your inconvenience</li>
+                        <li>Take immediate action to prevent future issues</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Red Flags We Avoid</h2>
+                <p>We reject items with:</p>
+                <ul>
+                    <li>Missing or altered serial numbers</li>
+                    <li>Poor quality materials or craftsmanship</li>
+                    <li>Incorrect logos or branding</li>
+                    <li>Suspicious pricing (too good to be true)</li>
+                    <li>Incomplete or missing documentation</li>
+                    <li>Unverifiable source or seller</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Counterfeit Prevention</h2>
+                <p>We actively combat counterfeits by:</p>
+                <ul>
+                    <li>Maintaining strict sourcing standards</li>
+                    <li>Continuous staff training on authentication</li>
+                    <li>Staying updated on counterfeit trends</li>
+                    <li>Collaborating with brands and authorities</li>
+                    <li>Reporting counterfeit operations</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Brand Partnerships</h2>
+                <p>
+                    We work directly with authorized retailers and maintain relationships with luxury brands to ensure authenticity and access to genuine products.
+                </p>
+            </div>
+
+            <div class="info-section">
+                <h2>Questions About Authenticity?</h2>
+                <p>Contact our authentication team:</p>
+                <ul>
+                    <li><strong>WhatsApp:</strong> <a href="https://wa.me/254768187542" style="color: var(--gold);">+254 768 187 542</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:authenticity@valerianvault.com" style="color: var(--gold);">authenticity@valerianvault.com</a></li>
+                    <li><strong>Hours:</strong> Monday - Saturday, 9:00 AM - 6:00 PM</li>
+                </ul>
+
+                <div class="info-highlight">
+                    <strong>Trust & Transparency:</strong> We're committed to maintaining the highest standards of authenticity. Your trust is our most valuable asset.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <script>
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
