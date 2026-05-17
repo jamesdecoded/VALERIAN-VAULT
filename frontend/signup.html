@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login — VALERIAN VAULT</title>
+    <title>Sign Up — VALERIAN VAULT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,21 +24,44 @@
             </div>
 
             <div class="auth-card">
-                <!-- Unified Login Form -->
-                <form class="auth-form active" id="loginForm">
-                    <h2>Welcome Back</h2>
-                    <p class="auth-subtitle">Sign in to continue</p>
+                <!-- Sign Up Form -->
+                <form class="auth-form active" id="signupForm">
+                    <h2>Create Account</h2>
+                    <p class="auth-subtitle">Join the luxury fashion community</p>
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="name" id="signupName" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" id="signupPhone" required placeholder="+254712345678">
+                    </div>
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" name="email" id="loginEmail" required placeholder="your@email.com">
+                        <input type="email" name="email" id="signupEmail" required placeholder="your@email.com">
                     </div>
 
                     <div class="form-group">
                         <label>Password</label>
                         <div class="password-input">
-                            <input type="password" name="password" id="loginPassword" required placeholder="Enter your password">
-                            <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                            <input type="password" name="password" id="signupPassword" required placeholder="Create a password">
+                            <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <div class="password-input">
+                            <input type="password" name="confirmPassword" id="confirmPassword" required placeholder="Confirm your password">
+                            <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>
@@ -49,13 +72,12 @@
 
                     <div class="form-options">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="remember" id="rememberMe">
-                            <span>Remember me</span>
+                            <input type="checkbox" name="terms" id="termsCheckbox" required>
+                            <span>I agree to the Terms & Conditions</span>
                         </label>
-                        <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-large">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-large">Create Account</button>
 
                     <div class="auth-divider">
                         <span>or continue with</span>
@@ -68,11 +90,11 @@
                             <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                             <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                         </svg>
-                        Sign in with Google
+                        Sign up with Google
                     </button>
 
                     <p class="auth-footer">
-                        Don't have an account? <a href="signup.html" class="auth-link">Sign up</a>
+                        Already have an account? <a href="login.html" class="auth-link">Sign in</a>
                     </p>
                 </form>
             </div>
@@ -105,6 +127,6 @@
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
-    <script src="js/auth.js"></script>
+    <script src="js/signup.js"></script>
 </body>
 </html>

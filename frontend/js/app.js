@@ -52,9 +52,24 @@ function initEventListeners() {
     document.getElementById('cartClose').addEventListener('click', toggleCart);
     document.getElementById('overlay').addEventListener('click', closeAll);
     
-    // Profile button - redirect to login
+    // Profile button - logout or login
     document.getElementById('profileBtn').addEventListener('click', () => {
-        window.location.href = 'login.html';
+        const session = localStorage.getItem('valerianSession') || sessionStorage.getItem('valerianSession');
+        
+        if (session) {
+            // User is logged in, show logout confirmation
+            if (confirm('Do you want to logout?')) {
+                localStorage.removeItem('valerianSession');
+                sessionStorage.removeItem('valerianSession');
+                showToast('Logged out successfully');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1000);
+            }
+        } else {
+            // User not logged in, redirect to login
+            window.location.href = 'login.html';
+        }
     });
     
     // Filter Toggle

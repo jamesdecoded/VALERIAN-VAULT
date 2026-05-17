@@ -1,6 +1,45 @@
 {
   "users": [],
-  "orders": [],
-  "requests": [],
+  "orders": [
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Air Jordan 1 Retro High",
+          "brand": "Nike",
+          "price": 28500,
+          "category": "sneakers",
+          "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800",
+          "sizes": [
+            "UK 7",
+            "UK 8",
+            "UK 9",
+            "UK 10",
+            "UK 11"
+          ],
+          "trending": true,
+          "quantity": 1
+        }
+      ],
+      "total": 28500,
+      "paymentMethod": "M-Pesa",
+      "id": "1778855406021",
+      "createdAt": "2026-05-15T14:30:06.021Z"
+    }
+  ],
+  "requests": [
+    {
+      "productName": "niko",
+      "brand": "",
+      "productLink": "https://tester.test.io/course_registrations/13593907/course_pages/84",
+      "size": "",
+      "budget": "",
+      "name": "gfdsa",
+      "whatsapp": "+254712345678",
+      "notes": "",
+      "id": "1779020024943",
+      "createdAt": "2026-05-17T12:13:44.943Z"
+    }
+  ],
   "newsletter": []
 }
